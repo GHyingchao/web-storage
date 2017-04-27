@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>网页标题</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="设置"/>
+		<input type="button" value="获取"/>
+		<input type="button" value="删除"/>
+		
+		<script type="text/javascript">
+			var aInp = document.getElementsByTagName('input');
+
+			aInp[1].onclick = function(){
+				//alert( window.sessionStorage );//object
+				window.sessionStorage.setItem('name',aInp[0].value);
+			};
+			aInp[2].onclick = function(){
+				alert( window.sessionStorage.getItem('name') );
+			};
+			
+			aInp[3].onclick = function(){
+				window.sessionStorage.clear(); // 全部清除数据 
+			};
+		</script>
+	</body>
+</html>

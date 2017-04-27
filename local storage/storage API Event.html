@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>网页标题</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="checkbox" value="北京"/>北京
+		<input type="checkbox" value="上海"/>上海
+		<input type="checkbox" value="广州"/>广州
+		<input type="checkbox" value="深圳"/>深圳
+		<input type="checkbox" value="成都"/>成都
+		
+		<script type="text/javascript">
+			var aInp = document.getElementsByTagName('input');
+
+			for (var i=0;i<aInp.length;i++ )
+			{
+				aInp[i].onclick= function(){
+					if ( this.checked )
+					{
+						window.localStorage.setItem('s',this.value);
+					}else{
+						window.localStorage.setItem('sl',this.value);
+					}
+				};
+			}
+			window.addEventListener(
+				'storage',
+				function(e){
+					if ( e.key == 's'  )
+					{
+						for (var i=0;i<aInp.length;i++ )
+						{
+							if ( e.newValue  == aInp[i].value )
+							{
+								aInp[i].checked = true;
+							}
+						}
+					}else if( e.key == 's1' ){
+						for (var i=0;i<aInp.length;i++ )
+						{
+							if ( e.newValue  == aInp[i].value )
+							{
+								aInp[i].checked = false;
+							}
+						}
+					}
+					
+				}
+			);
+		</script>
+	</body>
+</html>

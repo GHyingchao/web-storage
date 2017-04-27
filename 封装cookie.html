@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>网页标题</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			//alert( document.cookie );
+			//alert(typeof document.cookie );//string 
+			var oDate = new Date() + 5;
+
+			//转简码
+			//alert( decodeURI('%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEAPI%E5%BA%94%E7%94%A8') )
+			//转URI编码 %E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEAPI%E5%BA%94%E7%94%A8
+			//alert( encodeURI('百度地图API应用') );
+			
+			// 设置过期时间
+			//document.cookie = 'age=36;expires='+oDate;
+			//alert( document.cookie );
+			
+			function setCookie( key ,value , timer  ){
+				var oDate = new Date();
+				oDate.setDate( oDate.getDate() + timer );
+				document.cookie = key + "=" + value + ';expires=' + oDate.toGMTString();
+			};
+			function getCookie(key){// 'username=dream; age=36'  [['name','dream'],age=36]
+				var arr1 = document.cookie.split('; ');
+				for (var i=0;i<arr1.length;i++ )
+				{
+					var arr2 = arr1[i].split('=');
+					if ( arr2[0] == key )
+					{
+						return decodeURI( arr2[1] );
+					}
+				}
+			};
+			function removeCookie( key ){
+				setCookie( key ,'',-1)
+			};
+
+			
+			//setCookie('name','小红',10)
+			//alert( getCookie("name")  );
+			//removeCookie('name');
+			//alert( document.cookie );
+		</script>
+	</body>
+</html>
